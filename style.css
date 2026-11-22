@@ -1,0 +1,225 @@
+/* ===== HyperZ UI Docs — Matching the GUI's dark purple theme ===== */
+:root {
+  --bg: #0a0a0f;
+  --bg-secondary: #0f0f14;
+  --bg-card: #12121a;
+  --bg-elevated: #16161f;
+  --border: rgba(140, 0, 255, 0.15);
+  --border-hover: rgba(140, 0, 255, 0.35);
+
+  --purple: #8c00ff;
+  --purple-light: #a064ff;
+  --purple-soft: #c084ff;
+  --purple-dark: #3c0078;
+  --purple-glow: rgba(140, 0, 255, 0.25);
+
+  --text: #f0eef5;
+  --text-secondary: #a09bb0;
+  --text-muted: #6b6580;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --sidebar-width: 280px;
+  --transition: 0.2s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background gradient glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: -30%;
+  left: -20%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(140, 0, 255, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -15%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(60, 0, 120, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform var(--transition);
+}
+
+.sidebar-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: white;
+  box-shadow: 0 0 20px var(--purple-glow);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.logo-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Search */
+.search-box {
+  position: relative;
+  margin: 16px 16px 8px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#searchInput:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px var(--purple-glow);
+}
+
+#searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+/* Navigation */
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 12px 20px;
+}
+
+.nav::-webkit-scrollbar {
+  width: 4px;
+}
+.nav::-webkit-scrollbar-thumb {
+  background: var(--purple-dark);
+  border-radius: 4px;
+}
+
+.nav-section {
+  margin-bottom: 20px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 8px 12px 6px;
+}
+
+.nav-link {
+  display: block;
+  padding: 8px 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  margin-bottom: 2px;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(140, 0, 255, 0.08);
+}
+
+.nav-link.active {
+  color: var(--purple-soft);
+  background: rgba(140, 0, 255, 0.12);
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.yt-btn {
+  display: flex;
+  align-items: center;
+... 
